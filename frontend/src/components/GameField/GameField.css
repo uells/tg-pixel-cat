@@ -1,0 +1,11 @@
+.game-field__grid {
+    margin: 3rem;
+    height: calc(100vh - 9rem);
+    margin-top: 6rem;
+    outline: 3px #fff solid;
+    border-radius: 20px;
+    background-image:
+        linear-gradient(rgba(244, 232, 212, 1) 1px, transparent 1px),
+        linear-gradient(to right, rgba(244, 232, 212, 1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
