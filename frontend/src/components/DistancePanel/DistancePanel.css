@@ -1,5 +1,6 @@
 .distance-panel {
     position: absolute;
+    z-index: 10;
     top: 6rem;
     left: 50%;
     transform: translate(-50%, -50%);
