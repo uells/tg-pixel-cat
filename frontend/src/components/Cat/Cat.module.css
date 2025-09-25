@@ -1,0 +1,8 @@
+.cat {
+    position: absolute;
+    background-image: url("../../../public/img/cat-front.png");
+    background-size: cover;
+    background-position-x: calc(40px);
+    height: calc(100 / 70 * 40px);
+    width: 40px;
+}
