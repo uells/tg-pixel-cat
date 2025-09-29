@@ -1,41 +1,29 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import classes from './CatV2.module.css';
 
 
 export default function CatV2({ x, y }) {
 
-    const cat = useRef(null);
+    const [position, setPosition] = useState({"x": x, "y": y});
+    const cat = useRef();
 
     useEffect(() => {
-        let moveDown = null;
         const handleKeyDown = (e) => {
-            if (e.key === "s" && !e.repeat) {
-                moveDown = setInterval(() => {
-                    cat.current.style.top = parseInt(cat.current.style.top) + 1 + "px";
-                }, 30)
-                cat.current.classList.add(classes.walkDown);
+            if (e.key === "s" || e.key === "ы") {
+                setPosition(prev => ({ "x": parseInt(prev.x), "y" : parseInt(prev.y) + 1 }));
             }
-        };
-
-        const handleKeyUp = (e) => {
-            clearInterval(moveDown);
-            cat.current.classList.remove(classes.walkDown);
+            cat.current.classList.add(classes.walkDown);
+            let timefDurationAnimation = setTimeout(() => {
+                 cat.current.classList.remove(classes.walkDown);
+            }, 600); 
         };
 
         window.addEventListener("keydown", handleKeyDown);
-        window.addEventListener("keyup", handleKeyUp);
-
-
-        return () => {
-            clearInterval(moveDown);
-            window.removeEventListener("keydown", handleKeyDown);
-            window.removeEventListener("keyup", handleKeyUp);
-        };
-
-    }, [])
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, []);
 
     return (
-        <div ref={cat} className={[classes.cat].join(" ")} style={{ top: y, left: x }}>
+        <div ref={cat} className={[classes.cat].join(" ")} style={{ top: position.y + "px", left: position.x + "px" }}>
 
         </div>
     )

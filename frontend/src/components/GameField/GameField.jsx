@@ -7,7 +7,7 @@ export default function GameField() {
         <div className="game-field">
             <div className="game-field__grid">
                 <CatV2
-                    x="50%"
+                    x="450px"
                     y="30px"
                 />
             </div>
