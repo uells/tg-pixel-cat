@@ -2,18 +2,29 @@ import { useEffect, useRef } from 'react';
 import classes from './Cat.module.css';
 
 
-export default function Cat({ x, y }) {
+export default function Cat({ x, y, fieldSize }) {
 
     const cat = useRef(null);
 
     useEffect(() => {
         let moveDown = null;
+
+        const computePositionTop = (currentPositionTop) => {
+
+            let newPositionTop = (parseInt(currentPositionTop) + 1) % fieldSize.height;
+            if (newPositionTop == fieldSize.height - 1) {
+                newPositionTop = -50;
+            }
+            return newPositionTop + "px";
+        }
+
         const handleKeyDown = (e) => {
             if (e.key === "s" && !e.repeat) {
-                moveDown = setInterval(() => {
-                    cat.current.style.top = parseInt(cat.current.style.top) + 1 + "px";
-                }, 30)
                 cat.current.classList.add(classes.walkDown);
+                moveDown = setInterval(() => {
+                    cat.current.style.top = computePositionTop(cat.current.style.top);
+                }, 20)
+
             }
         };
 
@@ -35,7 +46,7 @@ export default function Cat({ x, y }) {
     }, [])
 
     return (
-        <div ref={cat} className={[classes.cat].join(" ")} style={{ top: y, left: x }}>
+        <div ref={cat} className={[classes.cat].join(" ")} style={{ top: y + "px", left: x + "px" }}>
 
         </div>
     )

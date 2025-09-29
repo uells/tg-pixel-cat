@@ -7,7 +7,7 @@
 }
 
 .walkDown {
-  animation: walkDown 0.6s steps(5) infinite;
+  animation: walkDown 0.3s steps(5) infinite;
 }
 
 @keyframes walkDown {
