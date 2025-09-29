@@ -1,0 +1,20 @@
+.cat {
+    position: absolute;
+    background-image: url("../../../public/img/cat-front.png");
+    background-size: cover;
+    height: calc(100 / 70 * 40px);
+    width: 40px;
+}
+
+.walkDown {
+  animation: walkDown 0.6s steps(5) infinite;
+}
+
+@keyframes walkDown {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -200px;
+  }
+}
